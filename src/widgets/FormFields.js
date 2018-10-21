@@ -13,7 +13,7 @@ const FormFields = (props) => {
         }
         return formArray.map((item,i) =>{
             return (
-                <div key={i} className="form_element">
+                <div key={i} className="formelement">
                     {renderTemplates(item)}
                 </div>
             )
@@ -26,7 +26,12 @@ const FormFields = (props) => {
         <label>{label}</label>
         : null
     }
+    const changeHandler = (event, id) => {
+        const newState = props.formData;
+        newState[id].value = event.target.value;
 
+        props.change(newState)
+    }
     const renderTemplates = (data) => {
         let formTemplate = '';
         let values = data.settings;
@@ -36,6 +41,13 @@ const FormFields = (props) => {
             formTemplate = (
                 <div>
                     {showLabel(values.label, values.labelText)}
+                    <input
+                       {...values.config} 
+                       value={values.value}
+                       onChange={
+                           (event) => changeHandler(event, data.id)
+                       }
+                    />
                 </div>
             )
 
