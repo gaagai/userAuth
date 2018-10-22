@@ -22,17 +22,44 @@ class User extends Component {
                 element:'input',
                 value:'',
                 label:true,
-                labelText:'lastname',
+                labelText:'Last Name',
                 config:{
                     name:'lastname_input',
                     type:'text',
                     placeholder:'Enter Your Last Name'
                 }
 
-            }
+            },
+            message:{
+                element:'textarea',
+                value:'',
+                label:true,
+                labelText:'Message',
+                config:{
+                    name:'message_input',
+                    rows:4,
+                    cols:36
+                }
+
+            },
+            age:{
+                element:'select',
+                value:'',
+                label:true,
+                labelText:'Age',
+                config:{
+                    name:'age_input',
+                    options:[
+                        {val:'1', text:'10-20'},
+                        {val:'2', text:'20-30'},
+                        {val:'3', text:'+30'}
+                    ]
+                }
+
         }
         
     }
+}
 
     updateForm = (newState) => {
         this.setState({
